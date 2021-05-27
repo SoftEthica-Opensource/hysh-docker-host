@@ -1,0 +1,29 @@
+version: '3.6'
+networks:
+    basic:
+services:
+  hysh-docker-host:
+    container_name: hysh
+    build:
+      context: .
+      args:
+        INSTALLER_URI: ${INSTALLER_URI}
+        AGENT_NAME: ${AGENT_NAME}
+        AGENT_IDENTIFIER: ${CHAINCODE_ID_NAME}
+        HYSH_START_TEMPLATE_URL: ${HYSH_START_TEMPLATE_URL}
+    restart: always
+    volumes:
+      - type: bind
+        source: /var/run/docker.sock
+        target: /var/run/docker.sock
+    environment:
+      CHAINCODE_ID_NAME: ${CHAINCODE_ID_NAME}
+      CHAINCODE_VERSION: ${CHAINCODE_VERSION}
+      PEER_ADDRESS: ${PEER_ADDRESS}      
+    networks:
+      - basic      
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "20k"
+        max-file: "5"
