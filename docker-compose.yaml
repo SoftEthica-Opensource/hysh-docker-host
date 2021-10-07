@@ -19,7 +19,6 @@ services:
     environment:
       CHAINCODE_ID_NAME: ${CHAINCODE_ID_NAME}
       CHAINCODE_VERSION: ${CHAINCODE_VERSION}
-      PEER_ADDRESS: ${PEER_ADDRESS}      
     networks:
       - basic      
     logging:
