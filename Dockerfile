@@ -1,4 +1,4 @@
-FROM node
+FROM node:14-buster
 
 RUN apt-get -y update && \
     apt-get -y upgrade
