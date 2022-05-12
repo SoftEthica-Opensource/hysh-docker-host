@@ -1,7 +1,8 @@
 FROM node:14-buster
 
 RUN apt-get -y update && \
-    apt-get -y upgrade
+    apt-get -y upgrade && \
+    apt-get -y install bc
 
 WORKDIR /applications/docker-host
 
